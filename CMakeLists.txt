@@ -79,3 +79,10 @@ TARGET_LINK_LIBRARIES(rdns ottery)
 IF(ENABLE_CURVE MATCHES "ON")
 	TARGET_LINK_LIBRARIES(rdns sodium)
 ENDIF(ENABLE_CURVE MATCHES "ON")
+
+install(TARGETS rdns
+     LIBRARY DESTINATION lib COMPONENT libraries
+     ARCHIVE DESTINATION lib/static COMPONENT libraries)
+
+set(RDNS_HEADERS include/rdns_curve.h include/rdns_event.h include/rdns_ev.h include/rdns.h)
+install(FILES ${RDNS_HEADERS} DESTINATION include/rdns)
